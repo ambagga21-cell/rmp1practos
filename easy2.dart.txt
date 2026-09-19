@@ -1,0 +1,127 @@
+import 'package:flutter/material.dart';
+
+/// Макет "Welcome" — стартовый экран приложения "medinow".
+class Easy2 extends StatelessWidget {
+  const Easy2({super.key});
+
+  static const Color _teal = Color(0xFF0E9B93);
+  static const Color _mint = Color(0xFFB6EFE9);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: _teal,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 28),
+          child: Column(
+            children: [
+              const SizedBox(height: 48),
+              // Логотип.
+              const Text(
+                'medinow',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 40,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: -0.5,
+                ),
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'Meditate With Us!',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const SizedBox(height: 40),
+              // Sign in with Apple.
+              _PillButton(
+                background: Colors.white,
+                foreground: Colors.black,
+                icon: Icons.apple,
+                label: 'Sign in with Apple',
+              ),
+              const SizedBox(height: 14),
+              // Continue with Email or Phone.
+              _PillButton(
+                background: _mint,
+                foreground: const Color(0xFF0B3B38),
+                label: 'Continue with Email or Phone',
+              ),
+              const SizedBox(height: 18),
+              // Continue With Google.
+              TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'Continue With Google',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              const Spacer(),
+              // Иллюстрация медитирующего.
+              ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: Container(
+                  color: const Color(0xFFF5F5F5),
+                  child: Image.asset(
+                    'lib/images/medinow.png',
+                    height: 230,
+                    width: double.infinity,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _PillButton extends StatelessWidget {
+  const _PillButton({
+    required this.background,
+    required this.foreground,
+    required this.label,
+    this.icon,
+  });
+
+  final Color background;
+  final Color foreground;
+  final String label;
+  final IconData? icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: 52,
+      child: TextButton.icon(
+        onPressed: () {},
+        style: TextButton.styleFrom(
+          backgroundColor: background,
+          foregroundColor: foreground,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(28),
+          ),
+        ),
+        icon: icon == null
+            ? const SizedBox.shrink()
+            : Icon(icon, size: 20, color: foreground),
+        label: Text(
+          label,
+          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+        ),
+      ),
+    );
+  }
+}

@@ -1,0 +1,59 @@
+import 'package:flutter/material.dart';
+import 'screens/easy_1.dart';
+import 'screens/easy_2.dart';
+import 'screens/hard_1.dart';
+import 'screens/hard_2.dart';
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'UI Lab',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.deepPurple),
+      home: const HomeMenu(),
+    );
+  }
+}
+
+class HomeMenu extends StatelessWidget {
+  const HomeMenu({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Screens'),
+        backgroundColor: Colors.deepPurple,
+        foregroundColor: Colors.white,
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          _item(context, 'Easy · Meditate (Mind Deep Relax)', const Easy1()),
+          _item(context, 'Easy · Welcome (medinow)', const Easy2()),
+          _item(context, 'Hard · Course Details (3D Design Basic)', const Hard1()),
+          _item(context, 'Hard · Organizer (Alexandr Gubchanskiy)', const Hard2()),
+        ],
+      ),
+    );
+  }
+
+  Widget _item(BuildContext context, String title, Widget screen) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 12),
+      child: ListTile(
+        title: Text(title),
+        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => screen),
+        ),
+      ),
+    );
+  }
+}

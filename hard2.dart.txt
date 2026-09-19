@@ -1,0 +1,299 @@
+import 'package:flutter/material.dart';
+
+/// Макет "43_Light_organizer of event about" — профиль организатора.
+class Hard2 extends StatelessWidget {
+  const Hard2({super.key});
+
+  static const Color _primary = Color(0xFF5B5BF5);
+  static const Color _textDark = Color(0xFF1C1B24);
+  static const Color _textGrey = Color(0xFF8A8A94);
+  static const Color _divider = Color(0xFFEDEDf2);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Верхняя панель.
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12, 10, 12, 4),
+                child: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () => Navigator.pop(context),
+                      icon: const Icon(Icons.arrow_back, color: _primary),
+                    ),
+                    const SizedBox(width: 4),
+                    const Text(
+                      'Organizer',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: _textDark,
+                      ),
+                    ),
+                    const Spacer(),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFEEF0FF),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const IconButton(
+                        onPressed: null,
+                        icon: Icon(Icons.more_vert, color: _primary),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // Аватар.
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.only(top: 12),
+                  padding: const EdgeInsets.all(4),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      colors: [Color(0xFFD9D9F2), Color(0xFFB9B9E8)],
+                    ),
+                  ),
+                  child: const CircleAvatar(
+                    radius: 44,
+                    backgroundColor: Color(0xFFEDEBFA),
+                    backgroundImage: AssetImage('lib/images/organizer.png'),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  child: Text(
+                    'Alexandr Gubchanskiy',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                      color: _textDark,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              // Статистика.
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: const Row(
+                  children: [
+                    Expanded(child: _Stat(value: '2.368', label: 'Followers')),
+                    _VDivider(),
+                    Expanded(child: _Stat(value: '346', label: 'Following')),
+                    _VDivider(),
+                    Expanded(child: _Stat(value: '13', label: 'Events')),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 24),
+              // Кнопки Follow / Messages.
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: _FilledButton(
+                        icon: Icons.person_add_alt_rounded,
+                        label: 'Follow',
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: _OutlinedButton(
+                        icon: Icons.mark_chat_read_outlined,
+                        label: 'Messages',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              // Табы About / Events / Reviews.
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: const [
+                    _TabChip(label: 'About', selected: true),
+                    _TabChip(label: 'Events', selected: false),
+                    _TabChip(label: 'Reviews', selected: false),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 24),
+              // Блок About.
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'About',
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w700,
+                        color: _textDark,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text(
+                      'меня зовут Александр Губогло, я спортсмен и очень крутой '
+                      'парень, все меня любят, а те, кто не любят просто завидуют '
+                      'мне, я всего добился сам, я чемпион, Криштиану Роналду мой '
+                      'Goat SIUUUUUUUUU',
+                      style: TextStyle(
+                        fontSize: 14,
+                        height: 1.6,
+                        color: _textGrey,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 32),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _Stat extends StatelessWidget {
+  const _Stat({required this.value, required this.label});
+
+  final String value;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          value,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+            color: Hard2._textDark,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          label,
+          style: const TextStyle(fontSize: 13, color: Hard2._textGrey),
+        ),
+      ],
+    );
+  }
+}
+
+class _VDivider extends StatelessWidget {
+  const _VDivider();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(width: 1, height: 34, color: Hard2._divider);
+  }
+}
+
+class _FilledButton extends StatelessWidget {
+  const _FilledButton({required this.icon, required this.label});
+
+  final IconData icon;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 48,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: Hard2._primary,
+          borderRadius: BorderRadius.circular(26),
+        ),
+        child: TextButton.icon(
+          onPressed: () {},
+          icon: Icon(icon, size: 18, color: Colors.white),
+          label: Text(
+            label,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _OutlinedButton extends StatelessWidget {
+  const _OutlinedButton({required this.icon, required this.label});
+
+  final IconData icon;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 48,
+      child: OutlinedButton.icon(
+        onPressed: () {},
+        style: OutlinedButton.styleFrom(
+          foregroundColor: Hard2._primary,
+          side: const BorderSide(color: Hard2._primary),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(26),
+          ),
+        ),
+        icon: Icon(icon, size: 18),
+        label: Text(
+          label,
+          style: const TextStyle(fontWeight: FontWeight.w600),
+        ),
+      ),
+    );
+  }
+}
+
+class _TabChip extends StatelessWidget {
+  const _TabChip({required this.label, required this.selected});
+
+  final String label;
+  final bool selected;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
+      decoration: BoxDecoration(
+        color: selected ? Hard2._primary : Colors.white,
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(
+          color: selected ? Hard2._primary : const Color(0xFFD7D7E6),
+        ),
+      ),
+      child: Text(
+        label,
+        style: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          color: selected ? Colors.white : Hard2._primary,
+        ),
+      ),
+    );
+  }
+}

@@ -1,0 +1,207 @@
+import 'package:flutter/material.dart';
+
+/// Макет "Meditate" — экран сессии "Mind Deep Relax".
+class Easy1 extends StatelessWidget {
+  const Easy1({super.key});
+
+  static const Color _teal = Color(0xFF1F9E96);
+  static const Color _textDark = Color(0xFF222128);
+  static const Color _textGrey = Color(0xFF8A8A94);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Иллюстрация.
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                    color: const Color(0xFFF5F5F5),
+                    child: Image.asset(
+                      'lib/images/MindDeepRelax.png',
+                      height: 220,
+                      width: double.infinity,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Alexandr Gubchanskiy',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontStyle: FontStyle.italic,
+                        color: _textGrey,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    const Text(
+                      'Mind Deep Relax',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                        color: _textDark,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    const Text(
+                      'Join the Community as we prepare over 33 days to relax '
+                      'and feel joy with the mind and happiness session across '
+                      'the World.',
+                      style: TextStyle(
+                        fontSize: 14,
+                        height: 1.5,
+                        color: _textGrey,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    // Кнопка запуска сессии.
+                    SizedBox(
+                      width: double.infinity,
+                      height: 52,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: _teal,
+                          borderRadius: BorderRadius.circular(28),
+                        ),
+                        child: TextButton.icon(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.play_arrow_rounded,
+                            color: Colors.white,
+                          ),
+                          label: const Text(
+                            'Play Next Session',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    _SessionTile(
+                      title: 'Sweet Memories',
+                      color: const Color(0xFF4C7BF3),
+                    ),
+                    _SessionTile(
+                      title: 'A Day Dream',
+                      color: const Color(0xFF1F9E96),
+                    ),
+                    _SessionTile(
+                      title: 'Mind Explore',
+                      color: const Color(0xFFF08A3C),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: const _BottomBar(),
+    );
+  }
+}
+
+class _SessionTile extends StatelessWidget {
+  const _SessionTile({required this.title, required this.color});
+
+  final String title;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: [
+          Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: const Icon(
+              Icons.play_arrow_rounded,
+              color: Colors.white,
+              size: 22,
+            ),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                    color: Easy1._textDark,
+                  ),
+                ),
+                const SizedBox(height: 3),
+                const Text(
+                  'December 29 Pre-Launch',
+                  style: TextStyle(fontSize: 12, color: Easy1._textGrey),
+                ),
+              ],
+            ),
+          ),
+          const Icon(
+            Icons.more_horiz_rounded,
+            color: Easy1._textGrey,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _BottomBar extends StatelessWidget {
+  const _BottomBar();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        border: Border(top: BorderSide(color: Color(0xFFEFEFF3))),
+      ),
+      child: SafeArea(
+        top: false,
+        child: SizedBox(
+          height: 62,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: const [
+              Icon(Icons.home_rounded, color: Color(0xFFB7B7C0)),
+              Icon(Icons.search_rounded, color: Color(0xFFB7B7C0)),
+              Icon(Icons.play_circle_outline_rounded, color: Easy1._teal),
+              Icon(Icons.favorite_border_rounded, color: Color(0xFFB7B7C0)),
+              Icon(Icons.person_outline_rounded, color: Color(0xFFB7B7C0)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
