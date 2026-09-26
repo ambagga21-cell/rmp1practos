@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-/// Макет "43_Light_organizer of event about" — профиль организатора.
 class Hard2 extends StatelessWidget {
   const Hard2({super.key});
 
@@ -18,7 +16,6 @@ class Hard2 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Верхняя панель.
               Padding(
                 padding: const EdgeInsets.fromLTRB(12, 10, 12, 4),
                 child: Row(
@@ -50,7 +47,6 @@ class Hard2 extends StatelessWidget {
                   ],
                 ),
               ),
-              // Аватар.
               Center(
                 child: Container(
                   margin: const EdgeInsets.only(top: 12),
@@ -84,7 +80,6 @@ class Hard2 extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // Статистика.
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: const Row(
@@ -98,7 +93,6 @@ class Hard2 extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              // Кнопки Follow / Messages.
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Row(
@@ -120,7 +114,6 @@ class Hard2 extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // Табы About / Events / Reviews.
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Wrap(
@@ -134,7 +127,6 @@ class Hard2 extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              // Блок About.
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
