@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-
-/// Макет "Welcome" — стартовый экран приложения "medinow".
 class Easy2 extends StatelessWidget {
   const Easy2({super.key});
-
   static const Color _teal = Color(0xFF0E9B93);
   static const Color _mint = Color(0xFFB6EFE9);
 
@@ -17,7 +14,6 @@ class Easy2 extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 48),
-              // Логотип.
               const Text(
                 'medinow',
                 style: TextStyle(
@@ -37,7 +33,6 @@ class Easy2 extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 40),
-              // Sign in with Apple.
               _PillButton(
                 background: Colors.white,
                 foreground: Colors.black,
@@ -45,14 +40,12 @@ class Easy2 extends StatelessWidget {
                 label: 'Sign in with Apple',
               ),
               const SizedBox(height: 14),
-              // Continue with Email or Phone.
               _PillButton(
                 background: _mint,
                 foreground: const Color(0xFF0B3B38),
                 label: 'Continue with Email or Phone',
               ),
               const SizedBox(height: 18),
-              // Continue With Google.
               TextButton(
                 onPressed: () {},
                 child: const Text(
@@ -65,7 +58,6 @@ class Easy2 extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              // Иллюстрация медитирующего.
               ClipRRect(
                 borderRadius: BorderRadius.circular(24),
                 child: Container(
