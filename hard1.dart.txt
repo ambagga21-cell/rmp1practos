@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-/// Макет "20_Light_Course Details" — экран деталей курса "3D Design Basic".
 class Hard1 extends StatelessWidget {
   const Hard1({super.key});
 
@@ -18,7 +16,6 @@ class Hard1 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Верхняя панель с кнопкой "назад" и заголовком.
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
                 child: Row(
@@ -39,7 +36,6 @@ class Hard1 extends StatelessWidget {
                   ],
                 ),
               ),
-              // Обложка курса.
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ClipRRect(
@@ -56,7 +52,6 @@ class Hard1 extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              // Чипы-бейджи.
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
@@ -136,7 +131,6 @@ class Hard1 extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              // Кнопка записи на курс.
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: SizedBox(
@@ -223,8 +217,6 @@ class Hard1 extends StatelessWidget {
     );
   }
 }
-
-/// Круглая светлая кнопка с иконкой.
 class _RoundIconButton extends StatelessWidget {
   const _RoundIconButton({required this.icon, this.onTap});
 
@@ -249,7 +241,6 @@ class _RoundIconButton extends StatelessWidget {
   }
 }
 
-/// Небольшой скруглённый бейдж с иконкой и текстом.
 class _InfoChip extends StatelessWidget {
   const _InfoChip({
     required this.label,
