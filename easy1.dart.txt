@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-/// Макет "Meditate" — экран сессии "Mind Deep Relax".
 class Easy1 extends StatelessWidget {
   const Easy1({super.key});
 
@@ -17,7 +15,6 @@ class Easy1 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Иллюстрация.
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
                 child: ClipRRect(
@@ -68,7 +65,6 @@ class Easy1 extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    // Кнопка запуска сессии.
                     SizedBox(
                       width: double.infinity,
                       height: 52,
